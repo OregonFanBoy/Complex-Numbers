@@ -1,86 +1,70 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @author Franklin Chappell
+ * Purpose: Calculates complex numbers and performs the correct output
+ *          of the resulted value.
  */
 package complex;
 
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
-//import static sun.management.Agent.error;
 
-/**
- *
- * @author Franklin
- */
 public class Complex {
 
   private double real, imagniary;
   
-  public Complex(){
-      
-  }
+  public Complex(){ }
 
   public Complex(double real, double imaginary) {
       this.real = real;
       this.imagniary = imaginary; 
   }
   
-  public String toString(){
-     
-      
+   
+   // Method will preform the correct output of the resulted value.
+  public String toString(){ 
       String operator,
          complex;
-      if (imagniary < 0) 
+      if (imagniary < 0) // There is no need to display the operator if i < 0
           operator = "";
       else 
           operator = "+";
       
-      if(imagniary ==0){
+      if(imagniary ==0){ //We only want to display the real number if i=0
            complex =(""+real);
       }
-      else if(imagniary ==1){
+      else if(imagniary ==1){ //We need to display the real + i if i=1
           complex = (""+real+operator+"i");
       }
-      else if(real ==0){
-          if(imagniary ==1)
+      else if(real ==0){    // if real is 0 then we only want to display imaginary
+          if(imagniary ==1) // if imaginary = 1 then we only want to display i
               complex =(""+"i");
           else{
           complex = (""+imagniary+"i");
           }
       }
       else{
-       //complex = (""+real+operator+imagniary+"i");   
        complex = String.format("%.5f"+operator+"%.5f"+"i",real,imagniary);
       }
-
-
- 
-        //if(imagniary ==0) return real+"";
-      //if(real == 0) return imagniary+ "i";
-      //if(imagniary <0) return real+ " - "+(-imagniary)+"i";
-      //return real+" + "+imagniary + "i";
       return complex;
   }
   /*****************************************************************************
    *        ADDITION 
    ****************************************************************************/
   public Complex add(Complex c){
-      
       return new Complex( real+c.real, imagniary+c.imagniary);
   }
+  
   /****************************************************************************
    *        SUBTRACTION
    ****************************************************************************/
-  public Complex minus(Complex c){
-      
+  public Complex minus(Complex c){    
       return new Complex(real-c.real, imagniary-c.imagniary);
   }
+  
   /****************************************************************************
    *        MULTIPLICATION
    ****************************************************************************/
-  public Complex product(Complex c){
-      
+  public Complex product(Complex c){    
       return new Complex(
             (real * c.real) - (imagniary * c.imagniary),
             (real * c.imagniary) + (imagniary * c.real)
@@ -92,7 +76,7 @@ public class Complex {
    ****************************************************************************/
 public Complex division(Complex c) throws ArithmeticException{
      
-    Complex conj = new Complex(c.real, c.imagniary * (-1.0));
+   Complex conj = new Complex(c.real, c.imagniary * (-1.0));
 
    if(c.real == 0 && c.imagniary==0)
        throw new ArithmeticException();
@@ -101,16 +85,9 @@ public Complex division(Complex c) throws ArithmeticException{
 
     double real = numerator.real / denomiator.real;
     double imagniary = numerator.imagniary / denomiator.real;
-
-   /* if(denomiator.imagniary == 0 && numerator.imagniary == 0)
-        imagniary = 0;
-    else if(denomiator.imagniary ==0 || denomiator.real ==0)
-        throw new ArithmeticException();
-    */
-
     return new Complex(real,imagniary);
-      
   }
+
   /****************************************************************************
    *        PARSE COMPLEX NUMBERS
      * @return 

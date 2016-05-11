@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author Franklin
+ * @author Franklin Chappell
+ * Purpose: Main driver class. Presents a good use of String tokenizer for
+ *          complex numbers.
  */
 package complex;
 import java.io.*;
@@ -67,10 +63,8 @@ public class Calculator {
             }
             catch(Exception exception){
                 System.out.println("Ilegal Format - Enter 'a+bi' and try again");
-            }
-            
+            }        
         }
-
     }
      
      /**************************************************************************
