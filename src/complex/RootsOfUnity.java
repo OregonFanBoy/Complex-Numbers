@@ -2,15 +2,9 @@ package complex;
 
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Frank
+ * @author Franklin Chappell
+ * Purpose: Using the complex numbers, we can calculate the roots of unity.
  */
 public class RootsOfUnity {
     public static void main(String args[]){
@@ -34,12 +28,8 @@ public class RootsOfUnity {
             }
         }while(notpass);
         
-        for(int angle =0;angle<360;angle +=360/num){
-           // System.out.
+        for(int angle =0;angle<Math.PI*2;angle +=Math.PI*2/num){
            System.out.println(new Complex(Math.cos(angle),Math.sin(angle)));
-        }
-        //System.out.println(new Complex(Math.cos(a),Math.sin(a)));
-        
-        
+        } 
     }
 }
